@@ -1,0 +1,5 @@
+textile/
+projects/*
+
+!projects/textile.vcxproj
+!projects/textile.vcxproj.filters
