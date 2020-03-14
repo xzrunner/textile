@@ -12,11 +12,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\textile\Page.h" />
+    <ClInclude Include="..\..\..\include\textile\PageCache.h" />
     <ClInclude Include="..\..\..\include\textile\PageIndexer.h" />
-    <ClInclude Include="..\..\..\include\textile\VirtualTextureInfo.h" />
+    <ClInclude Include="..\..\..\include\textile\PageLoader.h" />
+    <ClInclude Include="..\..\..\include\textile\TileDataFile.h" />
+    <ClInclude Include="..\..\..\include\textile\VTexInfo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\source\PageCache.cpp" />
     <ClCompile Include="..\..\..\source\PageIndexer.cpp" />
+    <ClCompile Include="..\..\..\source\PageLoader.cpp" />
+    <ClCompile Include="..\..\..\source\TileDataFile.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectName>3.textile</ProjectName>

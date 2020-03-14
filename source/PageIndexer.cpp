@@ -1,5 +1,5 @@
 #include "textile/PageIndexer.h"
-#include "textile/VirtualTextureInfo.h"
+#include "textile/VTexInfo.h"
 
 #include <algorithm>
 
@@ -8,16 +8,16 @@
 namespace textile
 {
 
-PageIndexer::PageIndexer(const VirtualTextureInfo& info)
+PageIndexer::PageIndexer(const VTexInfo& info)
 {
 	m_mip_count = static_cast<int>(std::log2(std::min(info.PageTableWidth(), info.PageTableHeight()))) + 1;
 
 	m_sizes.resize(m_mip_count);
 	for (int i = 0; i < m_mip_count; ++i)
     {
-		m_sizes[i].x = (info.vtex_width / info.tile_size) >> i;
-        m_sizes[i].y = (info.vtex_height / info.tile_size) >> i;
-	}
+		m_sizes[i].x = static_cast<int>(std::ceil((info.vtex_width >> i) / static_cast<float>(info.tile_size)));
+        m_sizes[i].y = static_cast<int>(std::ceil((info.vtex_height >> i) / static_cast<float>(info.tile_size)));
+    }
 
 	m_offsets.resize(m_mip_count);
 	m_page_count = 0;

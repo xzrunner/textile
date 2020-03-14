@@ -11,12 +11,12 @@
 namespace textile
 {
 
-struct VirtualTextureInfo;
+struct VTexInfo;
 
 class PageIndexer : boost::noncopyable
 {
 public:
-	PageIndexer(const VirtualTextureInfo& info);
+	PageIndexer(const VTexInfo& info);
 
 	int CalcPageIdx(const Page& page) const;
 	const Page& QueryPageByIdx(int idx) const;
