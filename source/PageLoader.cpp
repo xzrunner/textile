@@ -15,7 +15,7 @@ PageLoader::PageLoader(const std::string& filepath, const PageIndexer& indexer,
 	: m_indexer(indexer)
     , m_submit_task(submit_task)
 	, m_file(filepath)
-	, m_show_borders(true)
+	, m_show_borders(false)
 	, m_show_mip(false)
 {
 }
