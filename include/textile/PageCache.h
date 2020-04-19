@@ -5,6 +5,8 @@
 #include <boost/noncopyable.hpp>
 #include <unordered_map>
 
+namespace ur2 { class Device; }
+
 namespace textile
 {
 
@@ -17,11 +19,11 @@ public:
     PageCache(PageLoader& loader,
         const PageIndexer& indexer);
 
-    virtual void LoadComplete(const Page& page, const uint8_t* data) {}
+    virtual void LoadComplete(const ur2::Device& dev, const Page& page, const uint8_t* data) {}
 
     bool Touch(const Page& page);
 
-    bool Request(const Page& page);
+    bool Request(const ur2::Device& dev, const Page& page);
 
     void Clear() { m_lru.Clear(); }
 

@@ -10,7 +10,7 @@
 #include <string>
 #include <set>
 
-namespace textile { }
+namespace ur2 { class Device; }
 
 namespace textile
 {
@@ -24,9 +24,9 @@ public:
 	PageLoader(const std::string& filepath, const PageIndexer& indexer,
         std::function<void(mt::Task*)> submit_task = nullptr);
 
-	void LoadPage(const Page& page, PageCache& cache);
+	void LoadPage(const ur2::Device& dev, const Page& page, PageCache& cache);
 
-	void Update();
+	void Update(const ur2::Device& dev);
 
 	void ChangeShowBorder() { m_show_borders = !m_show_borders; }
 	void ChangeShowMip() { m_show_mip = !m_show_mip; }
@@ -48,7 +48,7 @@ private:
 
 		virtual void Run() override;
 
-		void Flush();
+		void Flush(const ur2::Device& dev);
 
 		void Initialize(const Page& page);
 		void Terminate();
@@ -77,7 +77,7 @@ private:
 
 		bool IsEmpty() { return m_count == 0; }
 
-		void Flush();
+		void Flush(const ur2::Device& dev);
 
 	private:
 		int m_count = 0;
