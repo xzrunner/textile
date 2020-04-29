@@ -35,7 +35,7 @@ bool PageCache::Touch(const Page& page)
 	}
 }
 
-bool PageCache::Request(const ur2::Device& dev, const Page& page)
+bool PageCache::Request(const ur::Device& dev, const Page& page)
 {
 	if (m_lru.Find(page)) {
 		return false;

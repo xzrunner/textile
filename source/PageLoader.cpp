@@ -20,7 +20,7 @@ PageLoader::PageLoader(const std::string& filepath, const PageIndexer& indexer,
 {
 }
 
-void PageLoader::LoadPage(const ur2::Device& dev, const Page& page, PageCache& cache)
+void PageLoader::LoadPage(const ur::Device& dev, const Page& page, PageCache& cache)
 {
 	int idx = m_indexer.CalcPageIdx(page);
 	if (m_loading.find(idx) != m_loading.end()) {
@@ -40,7 +40,7 @@ void PageLoader::LoadPage(const ur2::Device& dev, const Page& page, PageCache& c
 	m_tasks.Flush(dev);
 }
 
-void PageLoader::Update(const ur2::Device& dev)
+void PageLoader::Update(const ur::Device& dev)
 {
 	m_tasks.Flush(dev);
 }
@@ -169,7 +169,7 @@ void PageLoader::LoadPageTask::Run()
 	m_loader.AddResult(this);
 }
 
-void PageLoader::LoadPageTask::Flush(const ur2::Device& dev)
+void PageLoader::LoadPageTask::Flush(const ur::Device& dev)
 {
 	m_cache.LoadComplete(dev, m_page, m_pixels);
 
@@ -208,7 +208,7 @@ PageLoader::LoadPageTask* PageLoader::LoadPageTaskMgr::Fetch(PageLoader& loader,
 	return lpt;
 }
 
-void PageLoader::LoadPageTaskMgr::Flush(const ur2::Device& dev)
+void PageLoader::LoadPageTaskMgr::Flush(const ur::Device& dev)
 {
 	while (mt::Task* t = m_result.TryPop())
 	{
